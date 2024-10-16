@@ -1,12 +1,11 @@
-
+import "../scss/header.scss";
 
 const Header = () => {
   return (
-    <div>
-    <h1>COMMENTS</h1>
-      
-    </div>
-  )
-}
+    <header>
+      <h1>COMMENTS</h1>
+    </header>
+  );
+};
 
-export default Header
+export default Header;

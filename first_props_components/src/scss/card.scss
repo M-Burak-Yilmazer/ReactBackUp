@@ -1,0 +1,42 @@
+.image {
+  width: 250px;
+  border-radius: 50%;
+}
+
+.card {
+  padding: 1rem;
+  border: 2px solid red;
+  box-shadow: 5px 5px 5px crimson;
+  margin: 2rem;
+  width: 400px;
+  height: fit-content;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem; /* Öğe aralarına 1rem boşluk eklenir */
+}
+.cardInterior {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+button {
+  width: max-content;
+  padding: 1rem;
+}
+.small:hover {
+  transform: scale(0.9);
+}
+.large:hover{
+    transform: scale(1.3);
+}
