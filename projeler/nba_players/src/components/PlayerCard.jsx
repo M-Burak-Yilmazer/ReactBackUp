@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react";
+import Card from "react-bootstrap/Card";
 
-const PlayerCard = ({data}) => {
-    console.log(data);
+const PlayerCard = ({ img, name }) => {
   return (
-    <div>
-        <img src={data.img} alt={data.name} width="100px" />
-        <p>Player Name:{data.name}</p>
-    </div>
-  )
-}
+    <Card className="player-card rounded mt-2">
+      <Card.Img className="player-logo" variant="top" src={img}  />
+      <Card.Footer>Player Name:{name}</Card.Footer>
+    </Card>
+  );
+};
 
-export default PlayerCard
+export default PlayerCard;

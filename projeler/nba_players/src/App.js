@@ -1,12 +1,13 @@
 import Cards from "./components/Cards";
 import "./App.css";
 import {data} from "./helpers/data"
+import Container from "react-bootstrap/esm/Container";
 
 function App() {
   return (
-    <div>
+    <Container className="text-center my-4 p-2">
       <Cards data={data} />
-    </div>
+    </Container>
   );
 }
 

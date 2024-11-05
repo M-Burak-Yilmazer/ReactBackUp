@@ -5,7 +5,27 @@
 }
 
 body {
-  background-color:#f4d467;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4d467;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.card-container {
+  background-image: url("https://p4.wallpaperbetter.com/wallpaper/661/973/110/cool-nba-logo-wallpaper-preview.jpg");
+  min-width: 300px;
+  min-height: 432px;
+}
+
+.player-card {
+  height: 400px;
+  max-width: 280px;
+  min-width: 230px;
+}
+
+.player-logo {
+  height: 350px;
+   transition: transform 1s;
+}
+.player-logo:hover {
+  transform: scale(0.9);
+ 
+}

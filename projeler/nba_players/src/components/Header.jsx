@@ -1,14 +1,15 @@
 import React from "react";
 import img from "../assets/nba-logo.png";
+import Container from "react-bootstrap/esm/Container";
 
 
 const Header = () => {
   return (
-    <div>
+    <Container>
       <img src={img} alt="" />
-      <h1>NBA Legends</h1>
+      <h1 className>NBA Legends</h1>
       <input type="search" placeholder="Search Player..." />
-    </div>
+    </Container>
   );
 };
 
