@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import img from "../assets/nba-logo.png";
-import Container from "react-bootstrap/esm/Container";
+import Form from "react-bootstrap/Form";
 
+const Header = ({ handleInputChange }) => {
 
-const Header = () => {
   return (
-    <Container>
+    <div className="mb-3">
       <img src={img} alt="" />
-      <h1 className>NBA Legends</h1>
-      <input type="search" placeholder="Search Player..." />
-    </Container>
+      <h1>NBA Legends</h1>
+      <Form.Control
+        type="search"
+        placeholder="Search your player"
+        className="w-50 m-auto"
+        onChange={handleInputChange}
+      />
+    </div>
   );
 };
 
