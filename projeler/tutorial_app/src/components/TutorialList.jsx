@@ -2,8 +2,11 @@ import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import axios from "axios";
 import EditTutorial from "./EditTutorial";
+import { useState } from "react";
 
 const TutorialList = ({ data, getData }) => {
+
+
   // const tutorials = [
   //   {
   //     id: 1,
@@ -16,6 +19,8 @@ const TutorialList = ({ data, getData }) => {
   //     description: "JS library for UI design",
   //   },
   // ]
+
+  const [editData,setEditData]=useState({});
   const handleDelete = async (id) => {
     try {
       const URL = process.env.REACT_APP_URL;
@@ -25,6 +30,7 @@ const TutorialList = ({ data, getData }) => {
     }
     getData();
   };
+  console.log(editData)
 
   return (
     <div className="container mt-4">
@@ -54,6 +60,7 @@ const TutorialList = ({ data, getData }) => {
                     className="me-2 text-warning"
                     data-bs-toggle="modal"
                     data-bs-target="#open-modal"
+                    onClick={()=>setEditData(item)}
                   />
                   <AiFillDelete
                     size={22}
@@ -67,7 +74,7 @@ const TutorialList = ({ data, getData }) => {
           })}
         </tbody>
       </table>
-      <EditTutorial />
+      <EditTutorial editData={editData}/>
     </div>
   );
 };

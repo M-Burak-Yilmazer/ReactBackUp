@@ -1,24 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const EditTutorial = () => {
+const EditTutorial = ({ editData }) => {
+  const { id, title: oldTitle, description: oldDescription } = editData || {};
+
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const newEditedData = {
+      id: id,
+      title,
+      description,
+    };
+    console.log(newEditedData);
   };
+
+  const putTutorialData = async(itemId)=>{
+
+  }
+
+  useEffect(() => {
+    if (editData) {
+      setTitle(oldTitle || "");
+      setDescription(oldDescription || "");
+    }
+  }, [editData, oldTitle, oldDescription]);
+
   return (
     <div>
-      {/* Button trigger modal */}
-      {/* <button
-        type="button"
-        className="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#staticBackdrop"
-      >
-        Launch static backdrop modal
-      </button> */}
-      {/* Modal */}
       <div
         className="modal fade"
         id="open-modal"
@@ -46,7 +60,7 @@ const EditTutorial = () => {
               />
             </div>
             <div className="model-body p-3">
-              <form >
+              <form>
                 <div className="mb-3">
                   <label htmlFor="title" className="form-label">
                     Title
@@ -56,7 +70,7 @@ const EditTutorial = () => {
                     className="form-control"
                     id="title"
                     placeholder="Enter your title"
-                    value={title}
+                    value={title || ""}
                     onChange={(e) => setTitle(e.target.value)}
                     required
                   />
@@ -70,16 +84,21 @@ const EditTutorial = () => {
                     className="form-control"
                     id="desc"
                     placeholder="Enter your Description"
-                    value={description}
+                    value={description || ""}
                     onChange={(e) => setDescription(e.target.value)}
                     required
                   />
                 </div>
-                <button type="submit" className="btn btn-danger mb-4">
+                <button
+                  type="button"
+                  className="btn btn-danger mb-4"
+                  onClick={handleSubmit}
+                >
                   Submit
                 </button>
               </form>
             </div>
+
           </div>
         </div>
       </div>
