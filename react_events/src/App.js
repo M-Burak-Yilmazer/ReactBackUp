@@ -1,7 +1,8 @@
 import Event from "./1-events/Event";
 import Counter from "./2-state/Counter";
 import UseStateObject from "./3- object yapisi/UseStateObject";
-import Forms from "./4-forms/Forms";
+import FormsObject from "./4-forms/FormsObject";
+import KeyboardEvents from "./5- keyboard events/KeyboardEvents";
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
 
       {/* <UseStateObject/> */}
 
-      <Forms />
+      <KeyboardEvents/>
+      {/* <FormsObject/> */}
     </div>
   );
 }

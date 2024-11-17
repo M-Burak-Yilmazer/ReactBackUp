@@ -13,7 +13,7 @@ const Cards = ({ data }) => {
   console.log(input);
 
   let filteredData = data.filter((player) =>
-    player.name.toLocaleLowerCase().includes(input.toLocaleLowerCase())
+    player.name.toLocaleLowerCase().includes(input.toLocaleLowerCase().trim())
   );
 
   return (

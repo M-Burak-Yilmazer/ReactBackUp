@@ -3,27 +3,35 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import { useState } from "react";
 
-function Forms() {
-  const [username, setUsername] = useState("Burak");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const handleUserName = (e) => {
-    console.log(e.target.value);
-    setUsername(e.target.value);
+function FormsObject() {
+  //   const [username, setUsername] = useState("Burak");
+  //   const [email, setEmail] = useState("");
+  //   const [password, setPassword] = useState("");
+  //   const handleUserName = (e) => {
+  //     console.log(e.target.value);
+  //     setUsername(e.target.value);
+  //   };
+  const [form, setForm] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const { username, email, password } = form;
+  const handleData = (e) => {
+    setForm({ ...form, [e.target.id]: e.target.value });
   };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log(e.target);
-    alert(`username:${username},email:${email}`);
-    setEmail("");
-    setPassword("");
-    setUsername("");
+    alert(`username:${username}, email:${email}, password:${password}`);
+    setForm({ username: "", email: "", password: "" });
   };
-
+  //
   return (
     <Container>
       <Form onSubmit={handleFormSubmit}>
-        <h1>FORMS </h1>
+        <h1>FORMS Object</h1>
         <Form.Group className="mb-3">
           <Form.Label>
             Hello : <span className="fw-bold">{username}</span>
@@ -31,8 +39,8 @@ function Forms() {
           <Form.Control
             type="text"
             placeholder="Enter username"
-            onChange={handleUserName}
-            value={username}
+            onChange={handleData}
+            value={username || ""}
             id="username"
             required
           />
@@ -44,9 +52,9 @@ function Forms() {
           <Form.Control
             type="email"
             placeholder="Enter email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
             id="email"
-            value={email}
+            value={email || ""}
           />
         </Form.Group>
 
@@ -55,9 +63,9 @@ function Forms() {
           <Form.Control
             type="password"
             placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
             id="password"
-            value={password}
+            value={password || ""}
           />
         </Form.Group>
 
@@ -69,4 +77,4 @@ function Forms() {
   );
 }
 
-export default Forms;
+export default FormsObject;
