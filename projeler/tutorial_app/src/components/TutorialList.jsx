@@ -1,19 +1,30 @@
-import { FaEdit } from "react-icons/fa"
-import { AiFillDelete } from "react-icons/ai"
+import { FaEdit } from "react-icons/fa";
+import { AiFillDelete } from "react-icons/ai";
+import axios from "axios";
+import EditTutorial from "./EditTutorial";
 
-const TutorialList = () => {
-  const tutorials = [
-    {
-      id: 1,
-      title: "JS",
-      description: "JS is a programming language",
-    },
-    {
-      id: 2,
-      title: "React",
-      description: "JS library for UI design",
-    },
-  ]
+const TutorialList = ({ data, getData }) => {
+  // const tutorials = [
+  //   {
+  //     id: 1,
+  //     title: "JS",
+  //     description: "JS is a programming language",
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "React",
+  //     description: "JS library for UI design",
+  //   },
+  // ]
+  const handleDelete = async (id) => {
+    try {
+      const URL = process.env.REACT_APP_URL;
+      const res = await axios.delete(`${URL}${id}/`);
+    } catch (error) {
+      console.log(error);
+    }
+    getData();
+  };
 
   return (
     <div className="container mt-4">
@@ -29,8 +40,8 @@ const TutorialList = () => {
           </tr>
         </thead>
         <tbody>
-          {tutorials?.map((item) => {
-            const { id, title, description } = item
+          {data?.map((item) => {
+            const { id, title, description } = item;
             return (
               <tr key={id}>
                 <th>{id}</th>
@@ -41,20 +52,24 @@ const TutorialList = () => {
                     size={20}
                     type="button"
                     className="me-2 text-warning"
+                    data-bs-toggle="modal"
+                    data-bs-target="#open-modal"
                   />
                   <AiFillDelete
                     size={22}
                     type="button"
                     className="text-danger "
+                    onClick={() => handleDelete(id)}
                   />
                 </td>
               </tr>
-            )
+            );
           })}
         </tbody>
       </table>
+      <EditTutorial />
     </div>
-  )
-}
+  );
+};
 
-export default TutorialList
+export default TutorialList;
