@@ -1,28 +1,31 @@
 import React, { useEffect, useState } from "react";
-
-const EditTutorial = ({ editData }) => {
+import axios from "axios";
+const EditTutorial = ({ editData, getData }) => {
   const { id, title: oldTitle, description: oldDescription } = editData || {};
-
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const newEditedData = {
-      id: id,
       title,
       description,
     };
-    console.log(newEditedData);
+
+    putTutorialData(id, newEditedData);
+    getData();
   };
 
-  const putTutorialData = async(itemId)=>{
-
-  }
+  const putTutorialData = async (itemId, newData) => {
+    try {
+      const URL = process.env.REACT_APP_URL;
+      const res = await axios.put(`${URL}${itemId}/`, newData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     if (editData) {
@@ -36,8 +39,8 @@ const EditTutorial = ({ editData }) => {
       <div
         className="modal fade"
         id="open-modal"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
+        data-bs-backdrop="true"
+        data-bs-keyboard="true"
         tabIndex={-1}
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
@@ -93,12 +96,13 @@ const EditTutorial = ({ editData }) => {
                   type="button"
                   className="btn btn-danger mb-4"
                   onClick={handleSubmit}
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
                 >
                   Submit
                 </button>
               </form>
             </div>
-
           </div>
         </div>
       </div>
