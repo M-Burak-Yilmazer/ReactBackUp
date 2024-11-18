@@ -40,7 +40,7 @@ const EditTutorial = ({ editData, getData }) => {
         className="modal fade"
         id="open-modal"
         data-bs-backdrop="true"
-        data-bs-keyboard="true"
+        data-bs-keyboard="false"
         tabIndex={-1}
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
@@ -93,7 +93,7 @@ const EditTutorial = ({ editData, getData }) => {
                   />
                 </div>
                 <button
-                  type="button"
+                  type="submit"
                   className="btn btn-danger mb-4"
                   onClick={handleSubmit}
                   data-bs-dismiss="modal"
