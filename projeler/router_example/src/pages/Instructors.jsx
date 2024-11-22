@@ -1,8 +1,9 @@
-
 const Instructors = () => {
   return (
-    <div>Instructors</div>
-  )
-}
+    <div>
+      <h2>Instructors</h2>
+    </div>
+  );
+};
 
-export default Instructors
+export default Instructors;

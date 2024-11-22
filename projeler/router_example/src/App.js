@@ -5,6 +5,7 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Instructors from "./pages/Instructors";
 import NotFound from "./pages/NotFound";
+import "./App.css";
 
 function App() {
   return (
