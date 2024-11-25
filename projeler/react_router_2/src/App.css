@@ -1,0 +1,30 @@
+.active {
+  color: orange !important;
+  transform: scale(1.2) !important;
+}
+
+.nav-link:hover {
+  color: blue !important;
+  border-bottom: solid 3px ;
+  transition: 2s border-bottom ease-in-out !important;
+}
+.a {
+  position: relative; /* Pseudoelement için gerekli */
+  color: black;
+  text-decoration: none;
+}
+
+.a::after {
+  content: "";
+  position: absolute;
+  bottom: 0; /* Alt çizginin metnin altında olmasını sağlar */
+  left: 0;
+  width: 0; /* Başlangıçta görünmez */
+  height: 2px; /* Çizgi kalınlığı */
+  background-color: blue; /* Çizgi rengi */
+  transition: width 0.7s ease-in-out; /* Genişlik animasyonu */
+}
+
+.a:hover::after {
+  width: 100%; /* Çizginin tam genişliğe ulaşmasını sağlar */
+}

@@ -19,24 +19,24 @@ function Nav() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 me-3 mb-lg-0">
             <li className="nav-item">
-              <a href="/" className="nav-link active" aria-current="page">
+              <NavLink to="/" className="nav-link a " aria-current="page">
                 Home
-              </a>
+              </NavLink>
             </li>
 
             <li className="nav-item">
-              <NavLink to="/people" className="nav-link" aria-current="page">
+              <NavLink to="/people" className="nav-link a" aria-current="page">
                 People
               </NavLink>
             </li>
 
             <li className="nav-item">
-              <NavLink to="/paths" className="nav-link" aria-current="page">
+              <NavLink to="/paths" className="nav-link a" aria-current="page">
                 Paths
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/contact" className="nav-link" aria-current="page">
+              <NavLink to="/contact" className="nav-link a" aria-current="page">
                 Contact
               </NavLink>
             </li>
