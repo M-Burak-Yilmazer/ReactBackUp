@@ -16,7 +16,7 @@ const Path = () => {
         experts!
       </p>
       <div className="d-flex gap-3 justify-content-center">
-        <button onClick={() => navigate("fs")} className="btn btn-success w-50">
+        <button onClick={() => navigate("")} className="btn btn-success w-50">
           FS
         </button>
         <button

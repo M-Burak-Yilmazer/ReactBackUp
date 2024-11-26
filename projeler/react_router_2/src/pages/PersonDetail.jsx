@@ -1,16 +1,59 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import img from "../img/404.png";
 
 const PersonDetail = () => {
-  const {id} =useParams()
-  console.log(id)
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [error, setError] = useState(false);
+  const [person, setPerson] = useState([]);
+  const getPersonData = () => {
+    fetch(`https://reqres.in/api/users/${id}`)
+      .then((res) => {
+        if (!res.ok) {
+          setError(true);
+          throw new Error("something got wrong");
+        }
+
+        return res.json();
+      })
+      .then((data) => setPerson(data.data))
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    getPersonData();
+  }, []);
+
+  console.log(person);
+
   return (
     <div className="container text-center ">
-      <img className='img-thumbnail' src="" alt="" />
-      <h5>Name</h5>
-      <h6>Email</h6>
-    </div>
-  )
-}
+      {error ? (
+        <div>
+          <img src={img} alt="" />
+        </div>
+      ) : (
+        <div>
+          <img
+            className="img-thumbnail"
+            src={person.avatar}
+            alt={person.first_name}
+          />
+          <h5>
+            {person.first_name} {person.last_name}
+          </h5>
+          <h6>{person.email}</h6>
+        </div>
+      )}
 
-export default PersonDetail
+      <button className="btn btn-warning" onClick={() => navigate(-1)}>
+        BACK
+      </button>
+      <button className="btn btn-success" onClick={() => navigate("/")}>
+        HOME
+      </button>
+    </div>
+  );
+};
+
+export default PersonDetail;

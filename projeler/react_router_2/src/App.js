@@ -17,10 +17,13 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path = "/people" element={<PrivateRouter/>}>
+
+        </Route>
         <Route path="/people" element={<People />} />
         <Route path="people/:id" element={<PersonDetail />} />
         <Route path="/paths" element={<Path />}>
-          <Route path="fs" element={<FullStack />} />
+          <Route index path="" element={<FullStack />} />
           <Route path="aws" element={<Aws />} />
         </Route>
         <Route path="/contact" element={<Contact />} />
